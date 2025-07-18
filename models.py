@@ -34,11 +34,11 @@ class Order(Base):
 
     id = Column('id', Integer, primary_key=True, autoincrement=True)
     status = Column('status', String) # pending, completed, cancelled
-    user = Column('user', ForeignKey('users.id'))
+    user_id = Column('user', ForeignKey('users.id'))
     price = Column('price', Float)
 
     def __init__(self, user, status='PENDENTE', price=0):
-        self.user = user
+        self.user_id = user
         self.status = status
         self.price = price
 
