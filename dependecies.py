@@ -1,10 +1,11 @@
-from models import db
 from sqlalchemy.orm import sessionmaker
+from models import db
+
+SessionLocal = sessionmaker(bind=db)
 
 def catch_session():
-    try:    
-        Session = sessionmaker(bind=db)
-        session = Session()
-        yield session   
+    session = SessionLocal()
+    try:
+        yield session
     finally:
         session.close()
